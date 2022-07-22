@@ -1,7 +1,9 @@
 package com.chelso.ecommerce.entity;
 
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.UpdateTimestamp;
+import org.hibernate.annotations.Where;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -10,6 +12,8 @@ import java.util.Date;
 
 @Entity
 @Table(name = "products")
+@SQLDelete(sql = "UPDATE products SET deleted = true WHERE id=?")
+@Where(clause = "deleted = false")
 public class Product implements Serializable {
 
     @Id
@@ -28,7 +32,7 @@ public class Product implements Serializable {
     private String manufacturer;
     private boolean featured;
     // TODO: 21/07/2022 add relationship with product rating;
-    private boolean deleted;
+    private boolean deleted = Boolean.FALSE;
     @CreationTimestamp
     @Column(name = "created_at")
     private Date createdAt;
