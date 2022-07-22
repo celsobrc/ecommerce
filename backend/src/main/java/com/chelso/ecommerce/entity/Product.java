@@ -1,5 +1,8 @@
 package com.chelso.ecommerce.entity;
 
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -14,6 +17,9 @@ import java.util.Date;
 @Table(name = "products")
 @SQLDelete(sql = "UPDATE products SET deleted = true WHERE id=?")
 @Where(clause = "deleted = false")
+@Data
+@Builder
+@NoArgsConstructor
 public class Product implements Serializable {
 
     @Id

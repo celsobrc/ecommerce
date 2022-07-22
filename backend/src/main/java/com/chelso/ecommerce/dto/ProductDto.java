@@ -1,5 +1,8 @@
 package com.chelso.ecommerce.dto;
 
+import com.chelso.ecommerce.entity.Product;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -8,6 +11,8 @@ import java.math.BigDecimal;
 
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class ProductDto implements Serializable {
     private String productName;
     private String imageUrl;
